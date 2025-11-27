@@ -104,7 +104,7 @@ function CmaSyncIssue() {
         return stack.contentType(ct.uid).entry(e.uid).fetch({ version: e._version , locale: e.locale})
       })
 
-      const entriesWithVersions = await Promise.all(entriesWithVersionPromises);
+      const entriesWithVersions = (await Promise.allSettled(entriesWithVersionPromises)).map(e => e.status === "fulfilled" ? e.value : null);
 
 
       for( let i = 0; i < entriesWithVersions.length; i++ ){
@@ -175,7 +175,7 @@ function CmaSyncIssue() {
 
   return (
     <>
-      <h1>Get Entries with Sync Issue in CMA</h1>
+      <h1>Get Entries with Sync Issue in CDA</h1>
 
       <div style={{ display: "flex", gap: "10px" }}>
         <div style={{ display: "flex", flexDirection: "column" }}>

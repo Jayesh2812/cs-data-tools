@@ -56,21 +56,19 @@ const processLocaleForContentType = async (
 
   // Add skip limit to fetch all entries based on count
   // contentstack Delivery API limits: max 100 per request
-  const allEntries: any[] = [];
   let skip = entries.length;
   const limit = 100;
   // Adjust query for first batch
   while (skip < count) {
-    const batchQuery = { skip, limit, query };
+    const batchQuery = { skip, limit };
     const { entries: batchEntries } = (await localeStack
       .contentType(contentType.uid)
       .entry()
       .query(batchQuery)
       .find()) as { entries: any[] };
-    allEntries.push(...batchEntries);
+    entries.push(...batchEntries);
     skip += limit;
   }
-  entries = allEntries;
 
 
   for (const entry of entries) {
@@ -169,7 +167,7 @@ export const getCDANullEntries = async (
   };
 };
 
-async function getLocales(
+export async function getLocales(
   region: Region,
   branch: string,
   access_token: string,

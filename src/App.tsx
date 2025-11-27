@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router";
 
 const CdaNullEntries = React.lazy(() => import("./CDA-NULL-ENTRIES"));
 const CmaSyncIssue = React.lazy(() => import("./CMA-SYNC-ISSUE"));
+const CdaSyncIssue = React.lazy(() => import("./CDA-SYNC-ISSUE"));
 export default function App() {
   return (
     <ConfigProvider
@@ -17,6 +18,7 @@ export default function App() {
         <Routes>
           <Route path="/cda-null-entries" element={<CdaNullEntries />} />
           <Route path="/cma-sync-issue" element={<CmaSyncIssue />} />
+          <Route path="/cda-sync-issue" element={<CdaSyncIssue />} />
           <Route path="/" element={<DefaultPage />} />
         </Routes>
       </Router>
