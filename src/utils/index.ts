@@ -48,6 +48,7 @@ const processLocaleForContentType = async (
   const localeStack = contentstack.stack(stack.stackConfig);
   localeStack.setLocale(locale.code);
 
+  // @ts-ignore
   const query = getQuery(paths);
   let {entries, count} = (
     await localeStack.contentType(contentType.uid).entry().includeCount().find()

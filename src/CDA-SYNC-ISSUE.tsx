@@ -11,7 +11,6 @@ import {
   REGION_MANAGEMENT_URL_MAP,
 } from "./utils";
 import contentstackDelivery, {
-  Entry,
   Region,
   type StackConfig,
 } from "@contentstack/delivery-sdk";
